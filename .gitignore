@@ -1,1 +1,36 @@
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
+android/.gradle/
+android/app/build/
+android/app/src/main/res/mipmap-*
+android/app/src/main/res/drawable-*
+android/app/src/main/res/layout-*
+android/app/src/main/res/values-*
+android/local.properties
+*.iml
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
 .env
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+Thumbs.db
