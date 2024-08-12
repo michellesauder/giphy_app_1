@@ -17,7 +17,7 @@ A simple Giphy app that allows users to search for and view GIFs using the Giphy
 
 ## Technologies Used
 
-- **Frontend**: Flutter / React (specify which one you used)
+- **Frontend**: Flutter
 - **Backend**: Node.js / Express (if applicable)
 - **API**: Giphy API
 - **Version Control**: Git
