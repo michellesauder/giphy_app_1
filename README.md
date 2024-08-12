@@ -8,8 +8,6 @@ A simple Giphy app that allows users to search for and view GIFs using the Giphy
 - [Technologies Used](#technologies-used)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
