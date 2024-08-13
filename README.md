@@ -40,13 +40,6 @@ cd giphy_frontend
 flutter pub get
 ```
 
-For the backend (if applicable):
-
-```bash
-cd giphy_backend
-npm install
-```
-
 Environment Variables
 
 Create a .env file in the root of your project and add your Giphy API key:
