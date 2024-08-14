@@ -1,27 +1,32 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'dart:io';
+import 'package:path/path.dart' as p;
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:giphy_frontend/pages/giphy_home_page.dart'; // Update with the correct path
-
-// Create a Mock Client using Mockito
-class MockClient extends Mock implements http.Client {}
+import 'package:giphy_frontend/pages/giphy_home_page.dart';
+import 'giphy_home_page_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 void main() {
+  late MockClient client;
+
   test('returns an giphs if the http call completes successfully', () async {
-    final client = MockClient();
+    client = MockClient();
     Uri gifBackendUrl =
         Uri.parse('http://localhost:5000/api/gifs/search?query=dog');
 
+    var contents = await File(p.join(
+            Directory.current.path, 'test', 'test_data_query_response_dog.txt'))
+        .readAsString();
+
     // Use Mockito to return a successful response when it calls the
     // provided http.Client.
-    when(client.get(gifBackendUrl)).thenAnswer((_) async =>
-        http.Response('{"userId": 1, "id": 2, "title": "mock"}', 200));
+    when(client.get(gifBackendUrl))
+        .thenAnswer((_) async => http.Response(contents, 200));
 
-    // expect(await fetchGifsFromApi(client, 'dog'), isA<List>());
+    expect(await fetchGifsFromApi(client, 'dog'), isA<List>());
   });
 
   // testWidgets('GiphyHomePage displays no GIFs message when empty',
