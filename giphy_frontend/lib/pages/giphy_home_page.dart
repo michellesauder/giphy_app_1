@@ -14,6 +14,18 @@ class GiphyHomePage extends StatefulWidget {
       _GiphyHomePageState(); // Create the state for GiphyHomePage
 }
 
+Future<List<dynamic>> fetchGifsFromApi(http.Client client, String query) async {
+  var gifs;
+  final response = await client
+      .get(Uri.parse('http://localhost:5000/api/gifs/search?query=$query'));
+
+  if (response.statusCode != 200) {
+    throw Exception('Failed to load GIFs');
+  }
+  gifs = jsonDecode(response.body)['data'];
+  return gifs;
+}
+
 class _GiphyHomePageState extends State<GiphyHomePage> {
   List<dynamic> gifs = []; // Initialize an empty list to hold GIFs
   final TextEditingController _controller =
@@ -21,16 +33,10 @@ class _GiphyHomePageState extends State<GiphyHomePage> {
 
   // Function to GIFs based on the search query
   Future<void> fetchGifs(String query) async {
-    final response = await widget.client
-        .get(Uri.parse('http://localhost:5000/api/gifs/search?query=$query'));
-
-    if (response.statusCode == 200) {
-      setState(() {
-        gifs = jsonDecode(response.body)['data'];
-      });
-    } else {
-      throw Exception('Failed to load GIFs');
-    }
+    var returnedGifs = await fetchGifsFromApi(widget.client, query);
+    setState(() {
+      gifs = returnedGifs;
+    });
   }
 
   @override
