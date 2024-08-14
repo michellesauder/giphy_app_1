@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:giphy_frontend/examples/fetch_album.dart';
 import 'package:http/http.dart' as http;
-import 'package:giphy_frontend/main.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
