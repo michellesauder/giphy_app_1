@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart'; // Import Flutter material design package
+import 'package:http/http.dart'
+    as http; // Import HTTP package for making network requests
 
 import 'pages/giphy_home.dart';
 
@@ -14,7 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue, // Define the primary color theme
       ),
-      home: GiphyHomePage(), // Set the home page of the app
+      home: GiphyHomePage(
+        client: http.Client(),
+      ), // Set the home page of the app
     );
   }
 }
