@@ -58,7 +58,7 @@ void main() {
 
       await tester.pumpAndSettle(); // make sure app is there
       await Future.delayed(const Duration(seconds: 4)); // wait for app to load
-      await expectLater(find.byType(GiphyHomePage),
+      await expectLater(find.byType(LoginPage),
           matchesGoldenFile('goldens/login_failed_screen.png'));
 
       expect(find.text('Invalid username or password'), findsOneWidget);
