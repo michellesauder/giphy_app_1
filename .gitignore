@@ -34,3 +34,9 @@ yarn-error.log
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# ASP.NET Core configuration files
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+launchSettings.json
