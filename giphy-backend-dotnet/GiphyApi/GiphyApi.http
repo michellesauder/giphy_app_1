@@ -1,0 +1,6 @@
+@GiphyApi_HostAddress = http://localhost:5287
+
+GET {{GiphyApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

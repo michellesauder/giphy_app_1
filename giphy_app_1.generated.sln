@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "giphy-backend-dotnet", "giphy-backend-dotnet", "{A57203F4-24C0-47B1-8C30-DDB12416F6E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiphyApi", "giphy-backend-dotnet\GiphyApi\GiphyApi.csproj", "{04CC972A-0D72-4985-8D43-5475F79D5D3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04CC972A-0D72-4985-8D43-5475F79D5D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04CC972A-0D72-4985-8D43-5475F79D5D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04CC972A-0D72-4985-8D43-5475F79D5D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04CC972A-0D72-4985-8D43-5475F79D5D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04CC972A-0D72-4985-8D43-5475F79D5D3B} = {A57203F4-24C0-47B1-8C30-DDB12416F6E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8DAEBD4-64B0-4C92-9086-6507630064B3}
+	EndGlobalSection
+EndGlobal
