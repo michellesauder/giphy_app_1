@@ -28,7 +28,7 @@ A simple Giphy app that allows users to search for and view GIFs using the Giphy
 
    ```bash
    git clone https://github.com/yourusername/giphy-app.git
-   cd giphy-app
+   cd giphy-app_1
    ```
 
 1. Install Dependencies
