@@ -30,7 +30,7 @@ void main() {
       await tester.pumpAndSettle(); // make sure app is there
 
       expect(find.byType(GiphyHomePage), findsOneWidget);
-      await Future.delayed(const Duration(seconds: 2)); // wait for app to load
+      await Future.delayed(const Duration(seconds: 4)); // wait for app to load
 
       await expectLater(find.byType(GiphyHomePage),
           matchesGoldenFile('goldens/giphy_home_screen.png'));
@@ -57,7 +57,7 @@ void main() {
       await Future.delayed(const Duration(seconds: 2)); // wait for app to load
 
       await tester.pumpAndSettle(); // make sure app is there
-
+      await Future.delayed(const Duration(seconds: 4)); // wait for app to load
       await expectLater(find.byType(GiphyHomePage),
           matchesGoldenFile('goldens/login_failed_screen.png'));
 
