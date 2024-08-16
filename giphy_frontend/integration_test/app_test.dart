@@ -35,11 +35,11 @@ void main() {
       await expectLater(find.byType(GiphyHomePage),
           matchesGoldenFile('goldens/giphy_home_screen.png'));
 
-      // await tester.enterText(find.byType(TextField), 'dog');
-      // await tester.tap(find.byIcon(Icons.search));
-      // await Future.delayed(const Duration(seconds: 10)); // wait for app to load
+      await tester.enterText(find.byType(TextField), 'dog');
+      await tester.tap(find.byIcon(Icons.search));
+      await Future.delayed(const Duration(seconds: 10));
 
-      // expect(find.text('No GIFs found'), findsNothing);
+      expect(find.text('No GIFs found'), findsNothing);
     });
 
     testWidgets(
