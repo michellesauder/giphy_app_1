@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart'; // Import Flutter material design package
+import 'package:giphy_frontend/pages/login_screen.dart';
 // Import HTTP package for making network requests
 import 'dart:convert';
 import 'package:http/http.dart'
@@ -44,6 +45,17 @@ class _GiphyHomePageState extends State<GiphyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Giphy App'), // Set the title of the app bar
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // Back button icon
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoginPage(),
+              ),
+            ); // Navigate back to the previous screen
+          },
+        ),
       ),
       body: Column(
         children: [

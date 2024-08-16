@@ -31,7 +31,7 @@ void main() {
 
       expect(find.byType(GiphyHomePage), findsOneWidget);
       await Future.delayed(const Duration(seconds: 4)); // wait for app to load
-
+ 
       await expectLater(find.byType(GiphyHomePage),
           matchesGoldenFile('goldens/giphy_home_screen.png'));
 
@@ -42,26 +42,36 @@ void main() {
       // expect(find.text('No GIFs found'), findsNothing);
     });
 
-    testWidgets('verify login screen with current username and password',
+    testWidgets(
+        'verify incorrect login screen with current username and password',
         (tester) async {
-      app.main(); // calls the main app fn
-      await tester.pumpAndSettle(); // make sure app is there
-      await Future.delayed(const Duration(seconds: 2)); // wait for app to load
+      app.main(); // calls the main app function
+      await tester.pumpAndSettle(); // make sure app is
+
+      // Enter invalid credentials
       await tester.enterText(find.byType(TextFormField).at(0), 'Taylor Swift');
-      await Future.delayed(const Duration(seconds: 2)); // wait for app to load
-
       await tester.enterText(find.byType(TextFormField).at(1), 'shake it off');
-      await Future.delayed(const Duration(seconds: 2)); // wait for app to load
 
+      // Tap the login button
       await tester.tap(find.byType(ElevatedButton));
-      await Future.delayed(const Duration(seconds: 2)); // wait for app to load
+      await tester.pumpAndSettle(); // Wait for the dialog to appear
 
-      await tester.pumpAndSettle(); // make sure app is there
-      await Future.delayed(const Duration(seconds: 4)); // wait for app to load
-      await expectLater(find.byType(LoginPage),
+      // Verify that the AlertDialog is displayed
+      expect(find.byType(AlertDialog), findsOneWidget);
+
+      // Verify the content of the AlertDialog
+      expect(find.text('Invalid username or password'), findsOneWidget);
+      expect(find.text('Error'), findsOneWidget); // Check the title if needed
+
+      await expectLater(find.byType(AlertDialog),
           matchesGoldenFile('goldens/login_failed_screen.png'));
 
-      expect(find.text('Invalid username or password'), findsOneWidget);
+      // // Tap the OK button to close the dialog
+      await tester.tap(find.text('OK'));
+      await tester.pumpAndSettle(); // Wait for the dialog to close
+
+      // // Optionally, you can check that the dialog is no longer present
+      expect(find.byType(AlertDialog), findsNothing);
     });
   });
 }
