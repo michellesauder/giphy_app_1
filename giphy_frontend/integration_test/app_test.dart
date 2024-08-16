@@ -4,6 +4,8 @@ import 'package:giphy_frontend/pages/giphy_home.dart';
 import 'package:giphy_frontend/pages/login_screen.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:giphy_frontend/main.dart' as app;
+import 'package:http/http.dart'
+    as http; // Import HTTP package for making network requests
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +33,7 @@ void main() {
 
       expect(find.byType(GiphyHomePage), findsOneWidget);
       await Future.delayed(const Duration(seconds: 4)); // wait for app to load
- 
+
       await expectLater(find.byType(GiphyHomePage),
           matchesGoldenFile('goldens/giphy_home_screen.png'));
 
@@ -40,6 +42,28 @@ void main() {
       await Future.delayed(const Duration(seconds: 10));
 
       expect(find.text('No GIFs found'), findsNothing);
+    });
+
+    testWidgets('GiphyHome has a back button that navigates to LoginPage',
+        (WidgetTester tester) async {
+      // Build the GiphyHome widget
+      await tester
+          .pumpWidget(MaterialApp(home: GiphyHomePage(client: http.Client())));
+
+      // Find the IconButton with the Icons.arrow_back icon
+      final backButton = find.byIcon(Icons.arrow_back);
+
+      // Verify the IconButton is present
+      expect(backButton, findsOneWidget);
+
+      // Tap the back button
+      await tester.tap(backButton);
+
+      // Rebuild the widget after the state has changed
+      await tester.pumpAndSettle();
+
+      // Verify the navigation to LoginPage
+      expect(find.byType(LoginPage), findsOneWidget);
     });
 
     testWidgets(
